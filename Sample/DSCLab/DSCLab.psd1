@@ -14,12 +14,7 @@
         }
         @{
             Name = 'Web1'
-        }
-        @{
-            Name = 'App1'
-        }
-        @{
-            Name = 'App2'
+            Edition='SERVERDATACENTER'
         }
     )
 }
