@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:ms="urn:schemas-microsoft-com:asm.v3" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+<settings pass="windowsPE">
+<component name="Microsoft-Windows-Setup" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" processorArchitecture="x86">
+<UserData>
+<AcceptEula>true</AcceptEula>
+<!-- Optional FullName, Organization. WillShowUI for ComputerName, ProductKey default to OnError -->
+<FullName>MyFullName</FullName>
+<Organization>MyOrganizationName</Organization>
+<ProductKey>
+<WillShowUI>OnError</WillShowUI>
+<Key>Sensitive*Data*Deleted</Key>
+</ProductKey>
+</UserData>
+<ImageInstall>
+<OSImage>
+<WillShowUI>Never</WillShowUI>
+<InstallTo>
+<DiskID>0</DiskID>
+<PartitionID>1</PartitionID>
+</InstallTo>
+<InstallFrom>
+<MetaData>
+<Key>/IMAGE/Name</Key>
+<!—Specify that this is a Server Core installation. To install server, the value is Windows Longhorn Server%SKU%core. This example is for the Standard edition -->
+<Value>Windows Longhorn SERVERSTANDARDCORE</Value>
+</MetaData>
+</InstallFrom>
+</OSImage>
+</ImageInstall>
+</component>
+</settings><settings pass="oobeSystem">
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <UserAccounts>
+           <AdministratorPassword>
+              <Value>#ADMINPWD#</Value>
+              <PlainText>true</PlainText>
+           </AdministratorPassword>
+        </UserAccounts>
+    </component>
+</settings>
+<settings pass="specialize">
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ComputerName>#COMPUTERNAME#</ComputerName>
+    </component>
+</settings>
+</unattend>
